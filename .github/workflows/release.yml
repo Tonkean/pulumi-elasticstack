@@ -24,17 +24,17 @@ env:
   # PYPI REGISTRY THEN ENSURE THE PYPI_REPOSITORY_URL IS SET. IF YOU ARE USING AN API_TOKEN THEN
   # YOU DO NOT NEED TO CHANGE THE PYPI_USERNAME (__token__) , IF YOU ARE USING PASSWORD AUTHENTICATION THEN YOU WILL
   # NEED TO CHANGE TO USE THE CORRECT PASSWORD
-#  PYPI_PASSWORD: ${{ YOUR PYPI PASSWORD HERE }}
-  PYPI_USERNAME: "YOUR PYPI USERNAME HERE"
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN}}
+  PYPI_USERNAME: "__token__"
   PYPI_REPOSITORY_URL: ""
-  PUBLISH_PYPI: false
+  PUBLISH_PYPI: true
 jobs:
   publish_binary:
     name: publish
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
@@ -77,7 +77,7 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/action-install-pulumi-cli@v2.0.0
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{matrix.nodeversion}}
           registry-url: ${{env.NPM_REGISTRY_URL}}
@@ -86,11 +86,11 @@ jobs:
         with:
           dotnet-version: ${{matrix.dotnetverson}}
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2
         with:
           python-version: ${{matrix.pythonversion}}
       - name: Build SDK
-        run: make build_${{ matrix.language }}_sdk
+        run: make build_${{ matrix.language }}
       - name: Check worktree clean
         run: |
           git update-index -q --refresh
@@ -124,13 +124,13 @@ jobs:
         dotnetversion:
           - 3.1.301
         goversion:
-          - 1.17.x
+          - 1.18.x
         language:
           - nodejs
           - python
           - dotnet
           - go
         nodeversion:
-          - 14.x
+          - 16.x
         pythonversion:
           - "3.9"
