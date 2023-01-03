@@ -54,6 +54,7 @@ import (
 //
 // ```
 func IngestProcessorAppend(ctx *pulumi.Context, args *IngestProcessorAppendArgs, opts ...pulumi.InvokeOption) (*IngestProcessorAppendResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorAppendResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorAppend:IngestProcessorAppend", args, &rv, opts...)
 	if err != nil {

@@ -50,6 +50,7 @@ import (
 //
 // ```
 func IngestProcessorBytes(ctx *pulumi.Context, args *IngestProcessorBytesArgs, opts ...pulumi.InvokeOption) (*IngestProcessorBytesResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorBytesResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorBytes:IngestProcessorBytes", args, &rv, opts...)
 	if err != nil {

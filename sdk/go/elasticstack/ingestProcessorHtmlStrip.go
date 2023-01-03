@@ -48,6 +48,7 @@ import (
 //
 // ```
 func IngestProcessorHtmlStrip(ctx *pulumi.Context, args *IngestProcessorHtmlStripArgs, opts ...pulumi.InvokeOption) (*IngestProcessorHtmlStripResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorHtmlStripResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorHtmlStrip:IngestProcessorHtmlStrip", args, &rv, opts...)
 	if err != nil {

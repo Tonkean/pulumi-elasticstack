@@ -49,6 +49,7 @@ import (
 //
 // ```
 func IngestProcessorCommunityId(ctx *pulumi.Context, args *IngestProcessorCommunityIdArgs, opts ...pulumi.InvokeOption) (*IngestProcessorCommunityIdResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorCommunityIdResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorCommunityId:IngestProcessorCommunityId", args, &rv, opts...)
 	if err != nil {

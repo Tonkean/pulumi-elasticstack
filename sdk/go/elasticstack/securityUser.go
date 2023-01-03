@@ -137,6 +137,7 @@ func NewSecurityUser(ctx *pulumi.Context,
 		"passwordHash",
 	})
 	opts = append(opts, secrets)
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SecurityUser
 	err := ctx.RegisterResource("elasticstack:index/securityUser:SecurityUser", name, args, &resource, opts...)
 	if err != nil {

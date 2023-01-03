@@ -112,6 +112,7 @@ func NewIndexTemplate(ctx *pulumi.Context,
 	if args.IndexPatterns == nil {
 		return nil, errors.New("invalid value for required argument 'IndexPatterns'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource IndexTemplate
 	err := ctx.RegisterResource("elasticstack:index/indexTemplate:IndexTemplate", name, args, &resource, opts...)
 	if err != nil {

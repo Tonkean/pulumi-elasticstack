@@ -135,6 +135,7 @@ func NewLogstashPipeline(ctx *pulumi.Context,
 	if args.PipelineId == nil {
 		return nil, errors.New("invalid value for required argument 'PipelineId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource LogstashPipeline
 	err := ctx.RegisterResource("elasticstack:index/logstashPipeline:LogstashPipeline", name, args, &resource, opts...)
 	if err != nil {

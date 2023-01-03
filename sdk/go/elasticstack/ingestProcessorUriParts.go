@@ -51,6 +51,7 @@ import (
 //
 // ```
 func IngestProcessorUriParts(ctx *pulumi.Context, args *IngestProcessorUriPartsArgs, opts ...pulumi.InvokeOption) (*IngestProcessorUriPartsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorUriPartsResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorUriParts:IngestProcessorUriParts", args, &rv, opts...)
 	if err != nil {

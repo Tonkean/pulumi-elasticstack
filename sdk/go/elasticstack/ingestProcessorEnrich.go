@@ -51,6 +51,7 @@ import (
 //
 // ```
 func IngestProcessorEnrich(ctx *pulumi.Context, args *IngestProcessorEnrichArgs, opts ...pulumi.InvokeOption) (*IngestProcessorEnrichResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorEnrichResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorEnrich:IngestProcessorEnrich", args, &rv, opts...)
 	if err != nil {

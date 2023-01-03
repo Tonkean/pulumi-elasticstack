@@ -39,6 +39,7 @@ import (
 //
 // ```
 func DataSecurityRoleMapping(ctx *pulumi.Context, args *DataSecurityRoleMappingArgs, opts ...pulumi.InvokeOption) (*DataSecurityRoleMappingResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv DataSecurityRoleMappingResult
 	err := ctx.Invoke("elasticstack:index/dataSecurityRoleMapping:DataSecurityRoleMapping", args, &rv, opts...)
 	if err != nil {

@@ -87,6 +87,7 @@ func NewSnapshotRepository(ctx *pulumi.Context,
 		args = &SnapshotRepositoryArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SnapshotRepository
 	err := ctx.RegisterResource("elasticstack:index/snapshotRepository:SnapshotRepository", name, args, &resource, opts...)
 	if err != nil {

@@ -113,6 +113,7 @@ func NewScript(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Script
 	err := ctx.RegisterResource("elasticstack:index/script:Script", name, args, &resource, opts...)
 	if err != nil {

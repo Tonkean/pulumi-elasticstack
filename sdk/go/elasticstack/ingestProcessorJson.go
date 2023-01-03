@@ -49,6 +49,7 @@ import (
 //
 // ```
 func IngestProcessorJson(ctx *pulumi.Context, args *IngestProcessorJsonArgs, opts ...pulumi.InvokeOption) (*IngestProcessorJsonResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorJsonResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorJson:IngestProcessorJson", args, &rv, opts...)
 	if err != nil {

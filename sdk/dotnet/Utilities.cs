@@ -53,6 +53,7 @@ namespace Pulumi.Elasticstack
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/Tonkean/pulumi-elasticstack";
             return dst;
         }
 

@@ -49,6 +49,7 @@ import (
 //
 // ```
 func IngestProcessorFail(ctx *pulumi.Context, args *IngestProcessorFailArgs, opts ...pulumi.InvokeOption) (*IngestProcessorFailResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorFailResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorFail:IngestProcessorFail", args, &rv, opts...)
 	if err != nil {

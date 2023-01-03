@@ -48,6 +48,7 @@ import (
 //
 // ```
 func IngestProcessorUppercase(ctx *pulumi.Context, args *IngestProcessorUppercaseArgs, opts ...pulumi.InvokeOption) (*IngestProcessorUppercaseResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorUppercaseResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorUppercase:IngestProcessorUppercase", args, &rv, opts...)
 	if err != nil {

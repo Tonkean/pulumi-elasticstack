@@ -77,6 +77,7 @@ import (
 //
 // ```
 func IngestProcessorPipeline(ctx *pulumi.Context, args *IngestProcessorPipelineArgs, opts ...pulumi.InvokeOption) (*IngestProcessorPipelineResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorPipelineResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorPipeline:IngestProcessorPipeline", args, &rv, opts...)
 	if err != nil {

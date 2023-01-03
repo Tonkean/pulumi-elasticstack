@@ -51,6 +51,7 @@ import (
 //
 // ```
 func IngestProcessorRemove(ctx *pulumi.Context, args *IngestProcessorRemoveArgs, opts ...pulumi.InvokeOption) (*IngestProcessorRemoveResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorRemoveResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorRemove:IngestProcessorRemove", args, &rv, opts...)
 	if err != nil {

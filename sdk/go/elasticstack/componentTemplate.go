@@ -98,6 +98,7 @@ func NewComponentTemplate(ctx *pulumi.Context,
 	if args.Template == nil {
 		return nil, errors.New("invalid value for required argument 'Template'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ComponentTemplate
 	err := ctx.RegisterResource("elasticstack:index/componentTemplate:ComponentTemplate", name, args, &resource, opts...)
 	if err != nil {

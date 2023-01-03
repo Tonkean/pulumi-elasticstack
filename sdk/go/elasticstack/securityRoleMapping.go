@@ -100,6 +100,7 @@ func NewSecurityRoleMapping(ctx *pulumi.Context,
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SecurityRoleMapping
 	err := ctx.RegisterResource("elasticstack:index/securityRoleMapping:SecurityRoleMapping", name, args, &resource, opts...)
 	if err != nil {

@@ -45,6 +45,7 @@ func NewIngestPipeline(ctx *pulumi.Context,
 	if args.Processors == nil {
 		return nil, errors.New("invalid value for required argument 'Processors'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource IngestPipeline
 	err := ctx.RegisterResource("elasticstack:index/ingestPipeline:IngestPipeline", name, args, &resource, opts...)
 	if err != nil {

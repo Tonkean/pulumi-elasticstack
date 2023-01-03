@@ -152,6 +152,7 @@ namespace Pulumi.Elasticstack
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "github://api.github.com/Tonkean/pulumi-elasticstack",
                 AdditionalSecretOutputs =
                 {
                     "password",

@@ -29,6 +29,7 @@ func NewClusterSettings(ctx *pulumi.Context,
 		args = &ClusterSettingsArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ClusterSettings
 	err := ctx.RegisterResource("elasticstack:index/clusterSettings:ClusterSettings", name, args, &resource, opts...)
 	if err != nil {

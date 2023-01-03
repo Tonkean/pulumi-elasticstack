@@ -53,6 +53,7 @@ import (
 //
 // ```
 func IngestProcessorDissect(ctx *pulumi.Context, args *IngestProcessorDissectArgs, opts ...pulumi.InvokeOption) (*IngestProcessorDissectResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorDissectResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorDissect:IngestProcessorDissect", args, &rv, opts...)
 	if err != nil {

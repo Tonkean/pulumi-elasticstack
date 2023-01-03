@@ -62,6 +62,7 @@ import (
 //
 // ```
 func DataSnapshotRepository(ctx *pulumi.Context, args *DataSnapshotRepositoryArgs, opts ...pulumi.InvokeOption) (*DataSnapshotRepositoryResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv DataSnapshotRepositoryResult
 	err := ctx.Invoke("elasticstack:index/dataSnapshotRepository:DataSnapshotRepository", args, &rv, opts...)
 	if err != nil {

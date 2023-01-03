@@ -56,6 +56,7 @@ import (
 //
 // ```
 func IngestProcessorDate(ctx *pulumi.Context, args *IngestProcessorDateArgs, opts ...pulumi.InvokeOption) (*IngestProcessorDateResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorDateResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorDate:IngestProcessorDate", args, &rv, opts...)
 	if err != nil {

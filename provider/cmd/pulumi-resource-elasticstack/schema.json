@@ -10,6 +10,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`elasticstack` Terraform Provider](https://github.com/elastic/terraform-provider-elasticstack).",
     "repository": "https://github.com/pulumi/pulumi-elasticstack",
+    "pluginDownloadURL": "github://api.github.com/Tonkean/pulumi-elasticstack",
     "publisher": "Pulumi",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"

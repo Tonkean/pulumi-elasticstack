@@ -49,6 +49,7 @@ import (
 //
 // ```
 func IngestProcessorSplit(ctx *pulumi.Context, args *IngestProcessorSplitArgs, opts ...pulumi.InvokeOption) (*IngestProcessorSplitResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorSplitResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorSplit:IngestProcessorSplit", args, &rv, opts...)
 	if err != nil {

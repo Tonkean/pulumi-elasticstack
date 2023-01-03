@@ -109,6 +109,7 @@ func NewIndexLifecycle(ctx *pulumi.Context,
 		args = &IndexLifecycleArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource IndexLifecycle
 	err := ctx.RegisterResource("elasticstack:index/indexLifecycle:IndexLifecycle", name, args, &resource, opts...)
 	if err != nil {

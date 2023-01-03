@@ -124,6 +124,7 @@ func NewDataStream(ctx *pulumi.Context,
 		args = &DataStreamArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource DataStream
 	err := ctx.RegisterResource("elasticstack:index/dataStream:DataStream", name, args, &resource, opts...)
 	if err != nil {

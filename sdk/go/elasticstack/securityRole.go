@@ -112,6 +112,7 @@ func NewSecurityRole(ctx *pulumi.Context,
 		args = &SecurityRoleArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SecurityRole
 	err := ctx.RegisterResource("elasticstack:index/securityRole:SecurityRole", name, args, &resource, opts...)
 	if err != nil {

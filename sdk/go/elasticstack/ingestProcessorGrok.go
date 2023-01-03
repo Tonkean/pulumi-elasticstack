@@ -62,6 +62,7 @@ import (
 //
 // ```
 func IngestProcessorGrok(ctx *pulumi.Context, args *IngestProcessorGrokArgs, opts ...pulumi.InvokeOption) (*IngestProcessorGrokResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorGrokResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorGrok:IngestProcessorGrok", args, &rv, opts...)
 	if err != nil {

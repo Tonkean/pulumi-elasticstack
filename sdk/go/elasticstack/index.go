@@ -162,6 +162,7 @@ func NewIndex(ctx *pulumi.Context,
 		args = &IndexArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Index
 	err := ctx.RegisterResource("elasticstack:index/index:Index", name, args, &resource, opts...)
 	if err != nil {

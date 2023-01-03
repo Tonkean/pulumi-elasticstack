@@ -24,6 +24,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "elasticstack"
+        "name": "elasticstack",
+        "server": "github://api.github.com/Tonkean/pulumi-elasticstack"
     }
 }

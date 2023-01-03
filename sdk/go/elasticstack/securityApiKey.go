@@ -109,6 +109,7 @@ func NewSecurityApiKey(ctx *pulumi.Context,
 		"encoded",
 	})
 	opts = append(opts, secrets)
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SecurityApiKey
 	err := ctx.RegisterResource("elasticstack:index/securityApiKey:SecurityApiKey", name, args, &resource, opts...)
 	if err != nil {

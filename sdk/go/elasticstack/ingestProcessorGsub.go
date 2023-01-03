@@ -50,6 +50,7 @@ import (
 //
 // ```
 func IngestProcessorGsub(ctx *pulumi.Context, args *IngestProcessorGsubArgs, opts ...pulumi.InvokeOption) (*IngestProcessorGsubResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorGsubResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorGsub:IngestProcessorGsub", args, &rv, opts...)
 	if err != nil {

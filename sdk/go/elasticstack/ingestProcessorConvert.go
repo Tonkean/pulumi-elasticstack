@@ -58,6 +58,7 @@ import (
 //
 // ```
 func IngestProcessorConvert(ctx *pulumi.Context, args *IngestProcessorConvertArgs, opts ...pulumi.InvokeOption) (*IngestProcessorConvertResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorConvertResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorConvert:IngestProcessorConvert", args, &rv, opts...)
 	if err != nil {

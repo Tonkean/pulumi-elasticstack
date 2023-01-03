@@ -54,6 +54,7 @@ import (
 //
 // ```
 func IngestProcessorGeoip(ctx *pulumi.Context, args *IngestProcessorGeoipArgs, opts ...pulumi.InvokeOption) (*IngestProcessorGeoipResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv IngestProcessorGeoipResult
 	err := ctx.Invoke("elasticstack:index/ingestProcessorGeoip:IngestProcessorGeoip", args, &rv, opts...)
 	if err != nil {

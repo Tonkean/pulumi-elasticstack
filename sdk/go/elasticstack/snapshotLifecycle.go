@@ -115,6 +115,7 @@ func NewSnapshotLifecycle(ctx *pulumi.Context,
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SnapshotLifecycle
 	err := ctx.RegisterResource("elasticstack:index/snapshotLifecycle:SnapshotLifecycle", name, args, &resource, opts...)
 	if err != nil {
