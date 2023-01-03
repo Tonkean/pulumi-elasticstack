@@ -12,27 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package xyz
+package elasticstack
 
 import (
 	"fmt"
 	"path/filepath"
 
+	"github.com/Tonkean/pulumi-elasticstack/provider/pkg/version"
+	"github.com/elastic/terraform-provider-elasticstack/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/terraform-providers/terraform-provider-xyz/xyz"
 )
 
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
-	mainPkg = "xyz"
+	mainPkg = "elasticstack"
 	// modules:
-	mainMod = "index" // the xyz module
+	mainMod = "index" // the elasticstack module
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -46,12 +46,12 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(xyz.Provider())
+	p := shimv2.NewProvider(provider.New("dev"))
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:    p,
-		Name: "xyz",
+		Name: "elasticstack",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "",
@@ -70,17 +70,17 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing xyz cloud resources.",
+		Description:       "A Pulumi package for creating and managing elasticstack cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "xyz", "category/cloud"},
+		Keywords:   []string{"pulumi", "elasticstack", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-xyz",
+		Repository: "https://github.com/pulumi/pulumi-elasticstack",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "",
+		GitHubOrg: "elastic",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -92,7 +92,7 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -105,14 +105,131 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+			"elasticstack_elasticsearch_cluster_settings": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterSettings")},
+			"elasticstack_elasticsearch_component_template": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "ComponentTemplate")},
+			"elasticstack_elasticsearch_data_stream": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DataStream")},
+			"elasticstack_elasticsearch_index": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Index")},
+			"elasticstack_elasticsearch_index_lifecycle": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "IndexLifecycle")},
+			"elasticstack_elasticsearch_index_template": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "IndexTemplate")},
+			"elasticstack_elasticsearch_ingest_pipeline": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "IngestPipeline")},
+			"elasticstack_elasticsearch_logstash_pipeline": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LogstashPipeline")},
+			"elasticstack_elasticsearch_script": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Script")},
+			"elasticstack_elasticsearch_security_api_key": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityApiKey")},
+			"elasticstack_elasticsearch_security_role": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityRole")},
+			"elasticstack_elasticsearch_security_role_mapping": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityRoleMapping")},
+			"elasticstack_elasticsearch_security_system_user": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecuritySystemUser")},
+			"elasticstack_elasticsearch_security_user": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityUser")},
+			"elasticstack_elasticsearch_snapshot_lifecycle": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SnapshotLifecycle")},
+			"elasticstack_elasticsearch_snapshot_repository": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SnapshotRepository")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"elasticstack_elasticsearch_ingest_processor_append": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorAppend")},
+			"elasticstack_elasticsearch_ingest_processor_bytes": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorBytes")},
+			"elasticstack_elasticsearch_ingest_processor_circle": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorCircle")},
+			"elasticstack_elasticsearch_ingest_processor_community_id": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorCommunityId")},
+			"elasticstack_elasticsearch_ingest_processor_convert": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorConvert")},
+			"elasticstack_elasticsearch_ingest_processor_csv": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorCsv")},
+			"elasticstack_elasticsearch_ingest_processor_date": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorDate")},
+			"elasticstack_elasticsearch_ingest_processor_date_index_name": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorDateIndexName")},
+			"elasticstack_elasticsearch_ingest_processor_dissect": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorDissect")},
+			"elasticstack_elasticsearch_ingest_processor_dot_expander": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorDotExpander")},
+			"elasticstack_elasticsearch_ingest_processor_drop": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorDrop")},
+			"elasticstack_elasticsearch_ingest_processor_enrich": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorEnrich")},
+			"elasticstack_elasticsearch_ingest_processor_fail": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorFail")},
+			"elasticstack_elasticsearch_ingest_processor_fingerprint": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorFingerprint")},
+			"elasticstack_elasticsearch_ingest_processor_foreach": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorForeach")},
+			"elasticstack_elasticsearch_ingest_processor_geoip": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorGeoip")},
+			"elasticstack_elasticsearch_ingest_processor_grok": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorGrok")},
+			"elasticstack_elasticsearch_ingest_processor_gsub": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorGsub")},
+			"elasticstack_elasticsearch_ingest_processor_html_strip": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorHtmlStrip")},
+			"elasticstack_elasticsearch_ingest_processor_join": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorJoin")},
+			"elasticstack_elasticsearch_ingest_processor_json": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorJson")},
+			"elasticstack_elasticsearch_ingest_processor_kv": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorKv")},
+			"elasticstack_elasticsearch_ingest_processor_lowercase": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorLowercase")},
+			"elasticstack_elasticsearch_ingest_processor_network_direction": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorNetworkDirection")},
+			"elasticstack_elasticsearch_ingest_processor_pipeline": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorPipeline")},
+			"elasticstack_elasticsearch_ingest_processor_registered_domain": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorRegisteredDomain")},
+			"elasticstack_elasticsearch_ingest_processor_remove": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorRemove")},
+			"elasticstack_elasticsearch_ingest_processor_rename": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorRename")},
+			"elasticstack_elasticsearch_ingest_processor_script": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorScript")},
+			"elasticstack_elasticsearch_ingest_processor_set": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorSet")},
+			"elasticstack_elasticsearch_ingest_processor_set_security_user": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorSetSecurityUser")},
+			"elasticstack_elasticsearch_ingest_processor_sort": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorSort")},
+			"elasticstack_elasticsearch_ingest_processor_split": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorSplit")},
+			"elasticstack_elasticsearch_ingest_processor_trim": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorTrim")},
+			"elasticstack_elasticsearch_ingest_processor_uppercase": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorUppercase")},
+			"elasticstack_elasticsearch_ingest_processor_uri_parts": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorUriParts")},
+			"elasticstack_elasticsearch_ingest_processor_urldecode": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorUrldecode")},
+			"elasticstack_elasticsearch_ingest_processor_user_agent": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "IngestProcessorUserAgent")},
+			"elasticstack_elasticsearch_security_role": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "DataSecurityRole")},
+			"elasticstack_elasticsearch_security_role_mapping": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "DataSecurityRoleMapping")},
+			"elasticstack_elasticsearch_security_user": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "DataSecurityUser")},
+			"elasticstack_elasticsearch_snapshot_repository": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "DataSnapshotRepository")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
+			PackageName: "@tonkean/pulumi-elasticstack",
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
 			},
@@ -127,13 +244,14 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
+			PackageName: "pulumi_elasticstack",
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/Tonkean/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
