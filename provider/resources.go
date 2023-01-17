@@ -229,7 +229,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
-			PackageName: "@tonkean/pulumi-elasticstack",
+			PackageName: "@tonkean-public/pulumi-elasticstack",
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
 			},
