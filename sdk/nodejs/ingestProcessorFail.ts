@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const fail = elasticstack.IngestProcessorFail({
  *     "if": "ctx.tags.contains('production') != true",
@@ -113,7 +113,7 @@ export interface IngestProcessorFailResult {
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const fail = elasticstack.IngestProcessorFail({
  *     "if": "ctx.tags.contains('production') != true",

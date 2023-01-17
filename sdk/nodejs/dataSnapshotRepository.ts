@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const myUrlRepoSnapshotRepository = new elasticstack.SnapshotRepository("myUrlRepoSnapshotRepository", {url: {
  *     url: "https://example.com/repo",
@@ -110,7 +110,7 @@ export interface DataSnapshotRepositoryResult {
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const myUrlRepoSnapshotRepository = new elasticstack.SnapshotRepository("myUrlRepoSnapshotRepository", {url: {
  *     url: "https://example.com/repo",

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const kibanaSystem = new elasticstack.SecuritySystemUser("kibanaSystem", {
  *     elasticsearchConnection: {

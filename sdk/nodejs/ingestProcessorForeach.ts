@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const convert = elasticstack.IngestProcessorConvert({
  *     field: "_ingest._value",
@@ -143,7 +143,7 @@ export interface IngestProcessorForeachResult {
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const convert = elasticstack.IngestProcessorConvert({
  *     field: "_ingest._value",

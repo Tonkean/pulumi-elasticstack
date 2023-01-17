@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @tonkean/pulumi-elasticstack
+npm install @tonkean-public/pulumi-elasticstack
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @tonkean/pulumi-elasticstack
+yarn add @tonkean-public/pulumi-elasticstack
 ```
 
 ### Python
@@ -36,15 +36,22 @@ To use from Go, use `go get` to grab the latest version of the library:
 go get github.com/tonkean/pulumi-elasticstack/sdk/go/...
 ```
 
-### .NET
+## Configuration
 
-To use from .NET, install using `dotnet add package`:
+Python example use:
+```
+import pulumi_elasticstack
 
-```bash
-dotnet add package Pulumi.Elasticstack
+pulumi_elasticstack.Provider(
+    resource_name='test_Provider',
+    elasticsearch=pulumi_elasticstack.ProviderElasticsearchArgs(
+        username='USERNAME',
+        password='PASSWORD',
+        endpoints=['http://localhost:9200']
+    )
+)
 ```
 
-## Configuration
 
 ## Reference
 

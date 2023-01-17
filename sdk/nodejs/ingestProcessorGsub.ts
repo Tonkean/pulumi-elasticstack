@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const gsub = elasticstack.IngestProcessorGsub({
  *     field: "field1",
@@ -150,7 +150,7 @@ export interface IngestProcessorGsubResult {
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const gsub = elasticstack.IngestProcessorGsub({
  *     field: "field1",

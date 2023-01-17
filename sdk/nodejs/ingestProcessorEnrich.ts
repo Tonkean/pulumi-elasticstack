@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const enrich = elasticstack.IngestProcessorEnrich({
  *     policyName: "users-policy",
@@ -169,7 +169,7 @@ export interface IngestProcessorEnrichResult {
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as elasticstack from "@pulumi/elasticstack";
- * import * as elasticstack from "@tonkean/pulumi-elasticstack";
+ * import * as elasticstack from "@tonkean-public/pulumi-elasticstack";
  *
  * const enrich = elasticstack.IngestProcessorEnrich({
  *     policyName: "users-policy",

@@ -1,5 +1,5 @@
 {
-    "name": "@tonkean/pulumi-elasticstack",
+    "name": "@tonkean-public/pulumi-elasticstack",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing elasticstack cloud resources.",
     "keywords": [
